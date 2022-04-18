@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><% title %></title>
+</head>
+<body>
+    <h1>Sign Up page</h1>
+    <form action="/signup" method="post">
+        <label for="first_name">First name:</label>
+        <input type="text" name="first_name" id="first_name" required value=<% (user.first_name || "") %> >
+        <label for="last_name">Last name:</label>
+        <input type="text" name="last_name" id="last_name" required value=<% (user.last_name || "") %>>
+        <label for="username">Email:</label>
+        <input type="email" name="username" id="username" required value=<% (user.username || "") %>>
+        <label for="password">Password:</label>
+        <input type="text" name="password" id="password" required value=<% (user.password || "") %>>
+        <label for="passwordConf">Password Confirm:</label>
+        <input type="text" name="passwordConf" id="passwordCofn" required>
+        <button>Sign Up</button>
+      </form>
+      <% if (errors) { %>
+        <ul>
+            <% errors.forEach(err => { %>
+                 <li> <%= err.msg %> </li>
+            <% }) %>
+        </ul>
+      <% } %>
+</body>
+</html>
