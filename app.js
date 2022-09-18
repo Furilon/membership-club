@@ -87,14 +87,15 @@ app.get('/logout', (req, res) => {
     req.logout();
     res.redirect('/');
 });
+
 app.get('/message', (req, res) => {
-  if (req.isAuthenticated()) {
-    console.log(req.user)
-    res.render('message');
-} else {
-    res.send("Please, log in to see this page.")
-}
-})
+    if (req.isAuthenticated()) {
+        console.log(req.user);
+        res.render('message');
+    } else {
+        res.send('Please, log in to see this page.');
+    }
+});
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
