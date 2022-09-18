@@ -1,3 +1,4 @@
+const { format } = require('date-fns');
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
@@ -13,7 +14,7 @@ const messageSchema = new Schema({
     },
     timestamp: {
         type: Date,
-        default: Date.now(),
+        default: format(Date.now(), 'MM/dd/yyyy'),
     },
     user: {
         type: Schema.Types.ObjectId,
