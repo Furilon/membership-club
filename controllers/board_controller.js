@@ -5,8 +5,6 @@ const { body, validationResult } = require('express-validator');
 const async = require('async');
 const passport = require('passport');
 const bcrypt = require('bcryptjs');
-const session = require("express-session");
-const { ResultWithContext } = require('express-validator/src/chain');
 
 exports.index = function (req, res, next) {
     async.parallel(
@@ -25,14 +23,18 @@ exports.index = function (req, res, next) {
             res.render('index', {
                 title: 'The Board',
                 user: req.user,
-                messages: results.messages,
+                messages: results.messages.reverse(),
             });
         }
     );
 };
 
 exports.signup_get = function (req, res) {
-    res.render('sign_up', { title: 'Board Sign Up' });
+    res.render('sign_up', {
+        title: 'Board Sign Up',
+        user: false,
+        errors: false,
+    });
 };
 
 exports.signup_post = [
@@ -73,7 +75,7 @@ exports.signup_post = [
             console.log(user);
             res.render('sign_up', {
                 title: 'Board Sign Up',
-                user: req.body,
+                user: user,
                 errors: errors.array(),
             });
             return;
@@ -90,7 +92,7 @@ exports.signup_post = [
                     if (err) {
                         return next(err);
                     }
-                    res.redirect('/login');
+                    res.redirect('/');
                 });
             });
         }
@@ -122,12 +124,12 @@ exports.message_post = [
                 content: req.body.content,
                 timestamp: Date.now(),
                 user: req.user,
-            }).save(function(err) {
+            }).save(function (err) {
                 if (err) {
-                    return next(err)
+                    return next(err);
                 }
-                res.redirect("/");
-            })
+                res.redirect('/');
+            });
         }
     },
 ];
