@@ -1,45 +1,51 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <div id="navbar">
-      <% if (user) { %>
-        <h4>Hi, <%= user.full_name %> </h4>
-        <a href="/logout">LOG OUT</a>
-      <% } else { %>
-        <h4>Please, log in first!</h4>
-        <form action="/login" method="post">
-          <label for="username">Username (email):</label>
-          <input type="email" name="username" id="username" required>
-          <label for="password">Password:</label>
-          <input type="text" name="password" id="password" required>
-          <button>Log In</button>
-          <a href="/signup">Sign Up</a>
-        </form>
-      <% } %>
-    </div>
-    <div id="board">
-      <h1><%= title %></h1>
-      <p>Welcome to <%= title %></p>
-      <% if (user) { %>
-        <a href="/message">New Message</a>
-      <% } %>
-      <div id="messages">
-        <% messages.forEach(msg => { %>
-         <div class="msg">
-           <h3><%= msg.title %> </h3>
-           <p> <%= msg.content %> </p>
-           <% if (user) { %>
-              <p>Time: <%= msg.timestamp %> </p>
-              <p>Author: <%= msg.user.full_name %> </p>
-           <% } %>
-         </div>
-        <% }) %>
-      </div>
-    </div>
-    
-  </body>
+    <head>
+        <title><%= title %></title>
+        <link rel="stylesheet" href="/stylesheets/style.css" />
+    </head>
+    <body>
+        <div id="navbar">
+            <% if (user) { %>
+            <h4>Hi, <%= user.full_name %></h4>
+            <a href="/logout">LOG OUT</a>
+            <% } else { %>
+            <h4>Please, log in first!</h4>
+            <form action="/login" method="post">
+				<div>
+					<label for="username">Username (email):</label>
+					<input type="email" name="username" id="username" required />
+				</div>
+				<div>
+					<label for="password">Password:</label>
+					<input type="text" name="password" id="password" required />
+				</div>
+                <button>Log In</button>
+                <a href="/signup">Sign Up</a>
+            </form>
+            <% } %>
+        </div>
+        <div id="board">
+            <h1><%= title %></h1>
+            <p>Welcome to <%= title %></p>
+            <% if (user) { %>
+            <a href="/message">New Message</a>
+            <% } %>
+            <div id="messages">
+                <% messages.forEach(msg => { %>
+                <div class="msg">
+                    <h3><%= msg.title %></h3>
+                    <p><%= msg.content %></p>
+                    <% if (user) { %>
+                      <p>Time: <%= msg.timestamp %></p>
+                      <p>Author: <%= msg.user.full_name %></p>
+                    <% } else { %> 
+						<p>Time: Log in to see!</p>
+						<p>Author: Log in to see!</p>
+                    <% } %>
+                </div>
+                <% }) %>
+            </div>
+        </div>
+    </body>
 </html>
