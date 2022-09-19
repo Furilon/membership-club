@@ -1,67 +1,121 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/stylesheets/style.css" />
-    <title>Sign up</title>
-</head>
-<body>
-    <div id="navbar">
-      <a href="/">Membership Club</a>
-      <% if (user) { %>
-        <div id="nav-items">
-          <h4>Hi, <%= user.full_name %></h4>
-          <a href="/logout">Log out</a>
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="/stylesheets/style.css" />
+        <title>Sign up</title>
+    </head>
+    <body>
+        <div id="navbar">
+            <a href="/">Membership Club</a>
+            <% if (user) { %>
+            <div id="nav-items">
+                <h4>Hi, <%= user.full_name %></h4>
+                <a href="/logout">Log out</a>
+            </div>
+            <% } else { %>
+            <div id="nav-items">
+                <a href="/signup">Sign up</a>
+                <a href="/login">Log in</a>
+            </div>
+            <% } %>
         </div>
-      <% } else { %>
-        <div id="nav-items">
-          <a href="/signup">Sign up</a>
-          <a href="/login">Log in</a>
+        <div id="main">
+            <div id="signup">
+                <h1>Sign Up page</h1>
+                <% if (user) { %>
+                <form action="/signup" method="post">
+                    <div>
+                        <label for="first_name">First name:</label>
+                        <input type="text" name="first_name" id="first_name"
+                        required defaultValue=<% (user.first_name || "") %> >
+                    </div>
+                    <div>
+                        <label for="last_name">Last name:</label>
+                        <input type="text" name="last_name" id="last_name"
+                        required defaultValue=<% (user.last_name || "") %>>
+                    </div>
+                    <div>
+                        <label for="username">Email:</label>
+                        <input type="email" name="username" id="username"
+                        required defaultValue=<% (user.username || "") %>>
+                    </div>
+                    <div>
+                        <label for="password">Password:</label>
+                        <input type="text" name="password" id="password"
+                        required defaultValue=<% (user.password || "") %>>
+                    </div>
+                    <div>
+                        <label for="passwordConf">Password Confirm:</label>
+                        <input
+                            type="text"
+                            name="passwordConf"
+                            id="passwordCofn"
+                            required
+                        />
+                    </div>
+                    <button>Sign Up</button>
+                </form>
+                <% } else { %>
+                <form action="/signup" method="post">
+                    <div>
+                        <label for="first_name">First name:</label>
+                        <input
+                            type="text"
+                            name="first_name"
+                            id="first_name"
+                            required
+                        />
+                    </div>
+                    <div>
+                        <label for="last_name">Last name:</label>
+                        <input
+                            type="text"
+                            name="last_name"
+                            id="last_name"
+                            required
+                        />
+                    </div>
+                    <div>
+                        <label for="username">Email:</label>
+                        <input
+                            type="email"
+                            name="username"
+                            id="username"
+                            required
+                        />
+                    </div>
+                    <div>
+                        <label for="password">Password:</label>
+                        <input
+                            type="text"
+                            name="password"
+                            id="password"
+                            required
+                        />
+                    </div>
+                    <div>
+                        <label for="passwordConf">Password Confirm:</label>
+                        <input
+                            type="text"
+                            name="passwordConf"
+                            id="passwordCofn"
+                            required
+                        />
+                    </div>
+                    <button>Sign Up</button>
+                </form>
+                <% }%>
+            </div>
+            <% if (errors) { %>
+            <ul>
+                <% errors.forEach(err => { %>
+                <li><%= err.msg %></li>
+                <% }) %>
+            </ul>
+            <% } %>
         </div>
-      <% } %>
-    </div>
-    <div id="main">
-      <div id="signup">
-        <h1>Sign Up page</h1>
-        <% if (user) { %>
-          <form action="/signup" method="post">
-              <label for="first_name">First name:</label>
-              <input type="text" name="first_name" id="first_name" required defaultValue=<% (user.first_name || "") %> >
-              <label for="last_name">Last name:</label>
-              <input type="text" name="last_name" id="last_name" required defaultValue=<% (user.last_name || "") %>>
-              <label for="username">Email:</label>
-              <input type="email" name="username" id="username" required defaultValue=<% (user.username || "") %>>
-              <label for="password">Password:</label>
-              <input type="text" name="password" id="password" required defaultValue=<% (user.password || "") %>>
-              <label for="passwordConf">Password Confirm:</label>
-              <input type="text" name="passwordConf" id="passwordCofn" required>
-              <button>Sign Up</button>
-            </form>
-        <% } else { %>
-            <form action="/signup" method="post">
-              <label for="first_name">First name:</label>
-              <input type="text" name="first_name" id="first_name" required>
-              <label for="last_name">Last name:</label>
-              <input type="text" name="last_name" id="last_name" required>
-              <label for="username">Email:</label>
-              <input type="email" name="username" id="username" required>
-              <label for="password">Password:</label>
-              <input type="text" name="password" id="password" required>
-              <label for="passwordConf">Password Confirm:</label>
-              <input type="text" name="passwordConf" id="passwordCofn" required>
-              <button>Sign Up</button>
-            </form>
-        <% }%>
-      </div>
-      <% if (errors) { %>
-        <ul>
-            <% errors.forEach(err => { %>
-                  <li> <%= err.msg %> </li>
-            <% }) %>
-        </ul>
-      <% } %>
-    </div>
-</body>
+    </body>
 </html>
