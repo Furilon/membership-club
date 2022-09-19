@@ -76,6 +76,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 
+app.get('/login', (req, res) => {
+    res.render('log_in', {
+        user: false
+    });
+})
+
 app.post(
     '/login',
     passport.authenticate('local', {
