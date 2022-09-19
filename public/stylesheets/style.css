@@ -15,7 +15,7 @@ a, h1, h2, h4, label {
   align-items: center;
   justify-content: space-between;
   padding: 20px;
-  border: 1px solid black;
+  border: 1px solid #4CE0D2;
 }
 
 #navbar h4 {
@@ -36,10 +36,28 @@ a, h1, h2, h4, label {
   padding: 0 50px;
 }
 
-#main form {
+#login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#login form {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
+}
+
+#login form * {
+  margin: 2px 0 2px 0;
+}
+
+#login form button {
+  background-color: #4CE0D2;
+  color: #041B15;
+  border-radius: 5px;
+  width: 90px;
+  height: 30px;
 }
 
 #board {
