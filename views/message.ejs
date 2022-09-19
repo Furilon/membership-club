@@ -8,19 +8,35 @@
     <title>New Message</title>
 </head>
 <body>
-    <div id="new-msg">
-        <h1>New Message form</h1>
-        <form id="new-msg-form" action="/message" method="post">
-            <div>
-                <label for="title">Title:</label>
-                <input type="text" name="title" id="title">
+    <div id="navbar">
+        <a href="/">Membership Club</a>
+        <% if (user) { %>
+            <div id="nav-items">
+              <h4>Hi, <%= user.full_name %></h4>
+              <a href="/logout">Log out</a>
             </div>
-            <div>
-                <label for="content">Message:</label>
-                <textarea name="content" id="content" style="width: 194px"></textarea>
+          <% } else { %>
+            <div id="nav-items">
+              <a href="/signup">Sign up</a>
+              <a href="/login">Log in</a>
             </div>
-            <button>Post</button>
-        </form>
+          <% } %>
+    </div>
+    <div id="main">
+        <div id="new-msg">
+            <h1>New Message form</h1>
+            <form id="new-msg-form" action="/message" method="post">
+                <div>
+                    <label for="title">Title:</label>
+                    <input type="text" name="title" id="title">
+                </div>
+                <div>
+                    <label for="content">Message:</label>
+                    <textarea name="content" id="content" style="width: 194px"></textarea>
+                </div>
+                <button>Post</button>
+            </form>
+        </div>
     </div>
 </body>
 </html>
