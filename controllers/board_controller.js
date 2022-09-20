@@ -99,14 +99,6 @@ exports.signup_post = [
     },
 ];
 
-exports.secret_get = function (req, res) {
-    res.send('secret_get');
-};
-
-exports.secret_post = function (req, res) {
-    res.send('secret_post');
-};
-
 exports.message_post = [
     body('title').exists().trim().escape(),
     body('content').exists().trim().escape(),
@@ -114,6 +106,7 @@ exports.message_post = [
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
             res.render('message', {
+                user: req.user,
                 message: req.body,
                 errors: errors.toArray(),
             });

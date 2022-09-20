@@ -5,22 +5,15 @@ var router = express.Router();
 const board_controller = require('../controllers/board_controller');
 
 // GET index page.
-router.get('/', board_controller.index)
+router.get('/', board_controller.index);
 
 // GET signup
-router.get('/signup', board_controller.signup_get)
+router.get('/signup', board_controller.signup_get);
 
 // POST signup
-router.post('/signup', board_controller.signup_post)
-
-// GET secret
-router.get('/secret', board_controller.secret_get)
-
-//POST secret
-router.post('/secret', board_controller.secret_post)
+router.post('/signup', board_controller.signup_post);
 
 // POST new message
-router.post('/message', board_controller.message_post)
+router.post('/message', board_controller.message_post);
 
 module.exports = router;
-
