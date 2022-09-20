@@ -15,7 +15,20 @@ a, h1, h2, h4, label {
   align-items: center;
   justify-content: space-between;
   padding: 20px;
-  border: 1px solid #4CE0D2;
+}
+
+#navbar a {
+  text-decoration: none;
+  border: 2px solid #4CE0D2;
+  border-radius: 8px;
+  padding: 5px 8px;
+  margin: 0 0 0 20px;
+}
+
+#navbar a:hover {
+  background-color: #4CE0D2;
+  color: #041B15;
+  transition: transform
 }
 
 #navbar h4 {
@@ -28,10 +41,6 @@ a, h1, h2, h4, label {
   align-items: center;
 }
 
-#navbar #nav-items a {
-  margin: 0 0 0 20px;
-}
-
 #main {
   padding: 0 50px;
 }
@@ -42,23 +51,29 @@ a, h1, h2, h4, label {
   align-items: center;
 }
 
-#login form, #signup form {
+form {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
 }
 
-#login form *, #signup form * {
+form * {
   margin: 2px 0 2px 0;
 }
 
-#login form button, #signup form button {
-  background-color: #4CE0D2;
-  color: #041B15;
-  border-radius: 5px;
-  width: 90px;
+button {
+  background-color: #041B15;
+  color: #4CE0D2;
+  border-radius: 8px;
+  width: 75px;
   height: 30px;
   margin-top: 2px;
+  border: 2px solid #4CE0D2;
+}
+
+button:hover {
+  background-color: #4CE0D2;
+  color: #041B15;
 }
 
 #board {
@@ -76,25 +91,33 @@ a, h1, h2, h4, label {
 
 #board > a {
   margin-top: 10px;
+  text-decoration: none;
+  border: 2px solid #4CE0D2;
+  border-radius: 8px;
+  padding: 5px 8px;
+}
+
+#board > a:hover {
+  background-color: #4CE0D2;
+  color: #041B15;
 }
 
 .msg {
-	border: 1px solid black;
+	border: 2px solid #4CE0D2;
 	border-radius: 10px;
 	padding: 5px 10px;
 	margin: 15px 0;
   min-width: 300px;
   max-width: 450px;
   min-height: 153px;
-  background-color: #84CAE7;
+  color: #4CE0D2;
+  transition: transform 0.5s ease-out 0.05s;
 }
 
 .msg:hover {
-  /* 
-    Add hover on the cards
-    Stylize links (hover)
-    Add footer
-  */
+  background-color: #4CE0D2;
+  color: #041B15;
+  transform: scale(1.1, 1.1);
 }
 
 #new-msg {
@@ -113,4 +136,17 @@ a, h1, h2, h4, label {
 
 #new-msg-form > * {
 	margin: 5px;
+}
+
+input, textarea {
+  background-color: #041B15;
+  color: #4CE0D2;
+  border: 2px solid #4CE0D2;
+  border-radius: 8px;
+  padding: 4px;
+}
+
+input:focus, textarea:focus {
+  background-color: #4CE0D2;
+  color: #041B15;
 }
