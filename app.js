@@ -78,9 +78,9 @@ app.use('/', indexRouter);
 
 app.get('/login', (req, res) => {
     res.render('log_in', {
-        user: false
+        user: false,
     });
-})
+});
 
 app.post(
     '/login',
@@ -97,7 +97,7 @@ app.get('/logout', (req, res) => {
 app.get('/message', (req, res) => {
     if (req.isAuthenticated()) {
         console.log(req.user);
-        res.render('message');
+        res.render('message', { user: req.user, errors: false });
     } else {
         res.send('Please, log in to see this page.');
     }
