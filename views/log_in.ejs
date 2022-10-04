@@ -1,43 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/stylesheets/style.css" />
-    <title>Log in</title>
-</head>
-<body>
-    <div id="navbar">
-        <a href="/">Membership Club</a>
-        <% if (user) { %>
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="/stylesheets/style.css" />
+        <title>Log in</title>
+    </head>
+    <body>
+        <div id="navbar">
+            <a href="/">Membership Club</a>
+            <% if (user) { %>
             <div id="nav-items">
-              <h4>Hi, <%= user.full_name %></h4>
-              <a href="/logout">Log out</a>
+                <h4>Hi, <%= user.full_name %></h4>
+                <a href="/logout">Log out</a>
             </div>
-          <% } else { %>
+            <% } else { %>
             <div id="nav-items">
-              <a href="/signup">Sign up</a>
-              <a href="/login">Log in</a>
+                <a href="/signup">Sign up</a>
+                <a href="/login">Log in</a>
             </div>
-          <% } %>
-    </div>
-    <div id="main">
-        <div id="login">
-            <h1>Log In page</h1>
-            <form action="/login" method="post">
-                <div>
-                    <label for="username">Username (email):</label>
-                    <input type="email" name="username" id="username" required />
-                </div>
-                <div>
-                    <label for="password">Password:</label>
-                    <input type="text" name="password" id="password" required />
-                </div>
-                <button>Log In</button>
-            </form>
+            <% } %>
         </div>
-    </div>
-</body>
+        <div id="main">
+            <div id="login">
+                <h1>Log In page</h1>
+                <form action="/login" method="post">
+                    <div>
+                        <label for="username">Username (email):</label>
+                        <input
+                            type="email"
+                            name="username"
+                            id="username"
+                            required
+                        />
+                    </div>
+                    <div>
+                        <label for="password">Password:</label>
+                        <input
+                            type="text"
+                            name="password"
+                            id="password"
+                            required
+                        />
+                    </div>
+                    <button>Log In</button>
+                </form>
+            </div>
+        </div>
+        <footer>Mykyta Medvediev, 2022</footer>
+    </body>
 </html>
-

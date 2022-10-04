@@ -1,42 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/stylesheets/style.css">
-    <title>New Message</title>
-</head>
-<body>
-    <div id="navbar">
-        <a href="/">Membership Club</a>
-        <% if (user) { %>
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="/stylesheets/style.css" />
+        <title>New Message</title>
+    </head>
+    <body>
+        <div id="navbar">
+            <a href="/">Membership Club</a>
+            <% if (user) { %>
             <div id="nav-items">
-              <h4>Hi, <%= user.full_name %></h4>
-              <a href="/logout">Log out</a>
+                <h4>Hi, <%= user.full_name %></h4>
+                <a href="/logout">Log out</a>
             </div>
-          <% } else { %>
+            <% } else { %>
             <div id="nav-items">
-              <a href="/signup">Sign up</a>
-              <a href="/login">Log in</a>
+                <a href="/signup">Sign up</a>
+                <a href="/login">Log in</a>
             </div>
-          <% } %>
-    </div>
-    <div id="main">
-        <div id="new-msg">
-            <h1>New Message form</h1>
-            <form id="new-msg-form" action="/message" method="post">
-                <div>
-                    <label for="title">Title:</label>
-                    <input type="text" name="title" id="title">
-                </div>
-                <div>
-                    <label for="content">Message:</label>
-                    <textarea name="content" id="content" style="width: 194px"></textarea>
-                </div>
-                <button>Post</button>
-            </form>
+            <% } %>
         </div>
-    </div>
-</body>
+        <div id="main">
+            <div id="new-msg">
+                <h1>New Message form</h1>
+                <form id="new-msg-form" action="/message" method="post">
+                    <div>
+                        <label for="title">Title:</label>
+                        <input type="text" name="title" id="title" />
+                    </div>
+                    <div>
+                        <label for="content">Message:</label>
+                        <textarea
+                            name="content"
+                            id="content"
+                            style="width: 194px"
+                        ></textarea>
+                    </div>
+                    <button>Post</button>
+                </form>
+            </div>
+        </div>
+        <footer>Mykyta Medvediev, 2022</footer>
+    </body>
 </html>
