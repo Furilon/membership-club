@@ -9,6 +9,8 @@ const passport = require('passport');
 const bcrypt = require('bcryptjs');
 const LocalStrategy = require('passport-local').Strategy;
 const User = require('./models/user');
+const compression = require('compression');
+const helmet = require('helmet')
 require('dotenv').config();
 
 const indexRouter = require('./routes/index');
@@ -72,6 +74,8 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(compression());
+app.use(helmet();)
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
